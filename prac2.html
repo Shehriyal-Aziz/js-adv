@@ -1,0 +1,55 @@
+<!-- toaster notificaion -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="parent fixed p-10 flex flex-col gap-2 ">
+
+    </div>
+
+    <script>
+  function createToaster(config) {
+            return function (str) {
+                let div = document.createElement("div");
+                div.textContent = str;
+                div.className = `inline-block ${config.theme === "light" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"} px-6 py-3 rounded shadow-lg pointer-events-none`;
+                let parent = document.querySelector(".parent");
+                parent.appendChild(div);
+
+                // default top and right hota h so config mn agr kuch aur position di to work nhi kare gi for that we use this if
+    if (config.positionX !== "left" || positionY !== "top") {
+      document.querySelector(".parent").className +=
+        ` ${config.positionX === "right" ? " right-5" : " left-5"} ${config.positionY === "bottom" ? " bottom-5" : " top-5"}`;
+    }
+
+                setTimeout(() => {
+                    parent.removeChild(div);
+                }, config.duration * 1000);
+
+            };
+
+        }
+
+        let toaster = createToaster({
+            positionX: "left",
+            positionY: "top",
+            theme: "light",
+            duration: 3,
+        });
+
+        toaster("likha hua ji");
+        setTimeout(() => {
+            toaster("learning is so hard");
+        }, 2000);
+    </script>
+</body>
+
+</html>
