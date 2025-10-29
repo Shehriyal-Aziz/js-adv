@@ -73,4 +73,57 @@ fun2();//3
     }
     let fuc = clickme();
 
-    
+// THIS KEYWORD
+
+// this ki value and nature change hota rehta h epending on where it is and for what is being used
+
+// places where we use this
+// global,func,method,class.handler
+
+// in global 
+console.log(this);//its value is window
+// in fnc
+function abc(){
+  console.log(this);//its value is window here too
+}
+//in method(mehod explain in theory 1.js)
+let obj = {
+  name : "sher",
+  age : 23,
+  sayname : function(){
+    console.log(this); //here this is obj in which he is.means this.name = sher. this become obj in which he is 
+  }
+}
+// rules and point for method 
+// if used func keyword this will be obj ortherwise window when arrow func used
+// agr func k andar func banaya anf then tis use kiya to wo again window dega to prevent that function k andar wale func arrow func banao 
+// event handler
+ // jis pr bhi addevent listner laga hota h (eg. h1 ) wohi this hota h 
+ document.querySelector("h1").addEventListener("click",function(){
+  console.log(this);//this is h1 so if i write this.style.color = red; it will work
+ })
+// class
+//  class k andar this ki value blank obj hoti h jab aap usy new keyword k sath call krte ho
+class Abc {
+  constructor(){
+    console.log('hey');
+    this.a=12;
+  }
+}
+let val = new Abc();
+
+// summary 
+// value of this 
+// in globlal => window
+// in func => window
+// in method =>
+//  method with es5 function => obj
+// method with es6 arrow func => window
+//es5 fnc inside es5 method => window
+// arrow func inside es5 func => obj
+// in event handler => slected tag of html
+// in class => blank obj
+
+    // MANUAL BINDING 
+
+      
